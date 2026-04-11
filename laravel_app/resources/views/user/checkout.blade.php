@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            text-transform: uppercase;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px; /* Increased margin bottom for space */
+            color: #555;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="checkbox"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        input[type="checkbox"] {
+            width: auto;
+        }
+        button {
+            background-color: orange;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px; /* Add margin to the top */
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #total {
+            font-weight: bold;
+            color: #333;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 20px; /* Add margin to the bottom */
+        }
+
+        /* Add margin-bottom to individual labels */
+        label[for="beds"],
+        label[for="price"],
+        label[for="deposit"],
+        label[for="total"] {
+            margin-bottom: 20px; /* Adjust as needed */
+        }
+        label {
+        display: inline-block; /* Change display to inline-block */
+        width: 150px; /* Set a fixed width for labels */
+        text-align: right; /* Align labels to the right */
+        margin-right: 20px; /* Add margin to separate label and input */
+        font-weight: bold;
+        color: #555;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="checkbox"] {
+        display: inline-block; /* Change display to inline-block */
+        width: calc(50% - 90px); /* Adjust width for inputs */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+        body {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100vh; /* Full height of the viewport */
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 600px; /* Set a maximum width */
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+        text-transform: uppercase;
+    }
+
+    form {
+        margin-top: 20px;
+        text-align: center; /* Center align the form contents */
+    }
+
+    label {
+        display: inline-block;
+        width: 150px;
+        text-align: right;
+        margin-right: 20px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="checkbox"] {
+        display: inline-block;
+        width: calc(50% - 90px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    button {
+        background-color: orange;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #total {
+        font-weight: bold;
+        color: #333;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    /* Add margin-bottom to individual labels */
+    label[for="beds"],
+    label[for="price"],
+    label[for="deposit"],
+    label[for="total"] {
+        margin-bottom: 20px;
+    }
+        button {
+        background-color: orange;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    /* Remove hover effect */
+    button:hover {
+        background-color: orange;
+    }
+    button {
+        background-color: orange;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    /* Define keyframes for the animation */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Apply animation on button */
+    button:hover {
+        animation: pulse 0.5s ease infinite; /* Apply pulse animation on hover */
+    }
+
+    button {
+        background-color: orange;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-right: 10px; /* Add margin between buttons */
+        transition: transform 0.3s ease; /* Add transition for animation */
+    }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Checkout Page</h2>
+    <form id="checkoutForm" method="post" action="/payment_process">
+        @csrf
+        <script>
+            // Wait for the DOM content to be loaded
+            document.addEventListener("DOMContentLoaded", function() {
+                // Retrieve the stored value from localStorage
+                var storedRoomValue = localStorage.getItem("selectedRoom");
+
+                // Display the stored value in another text element
+                document.getElementById("roomName").value = storedRoomValue;
+            });
+        </script>
+        <div>
+            <br><label for="roomName">Room Name:</label>
+            <input type="text" id="roomName" name="roomnme">
+        </div>
+        <div>
+            <br><label for="beds">Beds:</label>
+            <input type="number" id="beds" name="bed" min="1">
+        </div>
+
+        <script>
+            // Retrieve the stored value from localStorage
+            var storedValue = localStorage.getItem("selectedValue");
+
+            // Display the stored value in the input field
+            document.getElementById("beds").value = storedValue;
+        </script>
+        <div>
+            <br><label for="price">Price per Bed:</label>
+            <input type="number" value="{{ $price }}" id="price" name="priceperb" min="0.00" step="0.01">
+        </div>
+        <div>
+            <br><label for="deposit">Deposit:</label>
+            <input type="number" id="deposit" name="deposite" value="1000" readonly>
+        </div>
+        <div>
+            <br><label for="total">Total:</label>
+            <input type="text" id="total" name="total" readonly>
+        </div>
+        <button type="button" onclick="calculateTotal()">Calculate Total</button>
+        <button type="submit" id="bookNowBtn" onclick="submitForm()">Book Now</button>
+    </form>
+</div>
+
+<script>
+    function calculateTotal() {
+        var beds = parseInt(document.getElementById('beds').value);
+        var price = parseFloat(document.getElementById('price').value);
+        var deposit = parseFloat(document.getElementById('deposit').value);
+        var total = (beds * price) + (deposit*beds);
+        localStorage.setItem('totalValue', total.toFixed(2));
+        document.getElementById('total').value = total.toFixed(2);
+
+       // localStorage.setItem('totalValue', total.toFixed(2));
+    }
+     function submitForm() {
+        var totalValue = localStorage.getItem('totalValue');
+        if (totalValue) {
+            document.getElementById('total').value = totalValue;
+            document.getElementById("checkoutForm").submit();
+        } else {
+            console.log("Total value not found in localStorage.");
+        }
+    }
+</script>
+</body>
+</html>
