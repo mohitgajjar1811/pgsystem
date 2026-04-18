@@ -153,15 +153,7 @@
                         </a>
                     </li>
 
-                    {{-- Login Records --}}
-                    <li>
-                        <a href="/admin/showlogin"
-                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
-                                  {{ Request::is('admin/showlogin') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="log-in" class="nav-icon" style="width:18px; height:18px;"></i>
-                            <span>Login Records</span>
-                        </a>
-                    </li>
+
 
                 </ul>
             </nav>

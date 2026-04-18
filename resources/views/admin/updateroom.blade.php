@@ -1,52 +1,68 @@
 @extends('layouts/admin')
-
-@section('title', 'Updateroom')
+@section('title', 'Update Room')
 
 @section('content')
-<div class="col-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">ADD ROOM</h4>
-            <form class="forms-sample" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label for="exampleInputName1">Price</label>
-                    <input type="text" class="form-control" id="exampleInputName1" placeholder="price" value="{{ $data->price }}" name="price">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputName1">Title</label>
-                    <input type="text" class="form-control" id="exampleInputName4" placeholder="title" value="{{ $data->title }}" name="title">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputName1">Detail</label>
-                    <input type="text" class="form-control" id="exampleInputName5" placeholder="detail" value="{{ $data->detail }}" name="detail">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputName2">Bed</label>
-                    <input type="text" class="form-control" id="exampleInputName2" placeholder="bed" value="{{ $data->bed }}" name="bed">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputName3">Image</label>
-                    <input type="file" class="form-control" id="exampleInputName3" placeholder="note" value="{{ asset('storage/' . $data->image) }}" name="image">
-                </div>
-                <div class="form-group">
-                                        <label>File upload</label>
-                                       <div class="input-group col-xs-12">
-                                           @if($data.image)
-                                           <img src="{{ asset('storage/' . $data->image) }}" alt="No image" height="100px" width="100px">
-                                                @endif
-                                            <input type="file" class="form-control file-upload-info" placeholder="Upload Image" name="image" onchange="displaySelectedImage(this);" accept="image/*">
 
-<!--                                         <span class="input-group-append">-->
-<!--                                            <button class="file-upload-browse btn btn-primary"-->
-<!--                                                    type="button">Upload</button>-->
-<!--                                         </span>-->
-                                        </div>
-                                  </div>
-                <button type="submit" class="btn btn-primary mr-2 btn-orange">Update</button>
-                <button class="btn btn-light">Cancel</button>
-            </form>
-        </div>
+<div class="flex items-center gap-3 mb-6">
+    <a href="/admin/showroom" class="text-gray-400 hover:text-gray-600 no-underline">
+        <i data-feather="arrow-left" style="width:20px;height:20px;"></i>
+    </a>
+    <h1 class="text-xl font-semibold text-gray-800">Update Room</h1>
+</div>
+
+<div class="max-w-xl">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <form method="post" enctype="multipart/form-data" class="space-y-5">
+            @csrf
+            
+            {{-- Current Image Preview --}}
+            @if($data->image)
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Current Image</label>
+                <div class="relative w-32 h-24 rounded-lg overflow-hidden border border-gray-200">
+                    <img src="{{ asset('img_uploads/' . $data->image) }}" class="w-full h-full object-cover">
+                </div>
+            </div>
+            @endif
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Change Image (Optional)</label>
+                <input type="file" name="image"
+                       class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200 cursor-pointer">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Price (₹)</label>
+                <input type="text" name="price" value="{{ $data->price }}" placeholder="e.g. 8000"
+                       class="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Bed Type</label>
+                <input type="text" name="bed" value="{{ $data->bed }}" placeholder="e.g. Single, Double"
+                       class="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Title</label>
+                <input type="text" name="title" value="{{ $data->title }}" placeholder="Room title"
+                       class="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1.5">Detail</label>
+                <input type="text" name="detail" value="{{ $data->detail }}" placeholder="Room details"
+                       class="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all">
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+                <button type="submit" class="inline-flex items-center gap-2 bg-gray-900 text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-700 transition-colors cursor-pointer">
+                    <i data-feather="check" style="width:16px;height:16px;stroke-width:2.5;"></i> Update Room
+                </button>
+                <a href="/admin/showroom" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 px-4 py-2.5 rounded-lg hover:bg-gray-100 transition-colors no-underline">Cancel</a>
+            </div>
+        </form>
     </div>
 </div>
+
 @endsection
