@@ -30,7 +30,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::match(['get', 'post'], '/payment_process', [MainController::class, 'payment_process']);
 Route::post('/success', [MainController::class, 'success']);
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard']);
     Route::get('/shownews', [AdminController::class, 'shownews']);
     Route::get('/showappointment', [AdminController::class, 'showappointment']);

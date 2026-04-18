@@ -30,6 +30,11 @@ class AuthController extends Controller
             if (Auth::guard('web')->attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
                 session(['is_login' => true]);
                 session(['userid' => $user->id]);
+                
+                if ($user->is_admin) {
+                     return redirect()->intended('/admin');
+                }
+                
                 return redirect()->intended('/');
             }
         }
