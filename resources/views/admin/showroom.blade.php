@@ -10,47 +10,58 @@
     </a>
 </div>
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-    <table class="w-full text-sm">
+@include('admin.partials.filters')
+
+<div id="admin-table-container">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <table class="w-full text-sm">
         <thead>
             <tr class="bg-gray-50 border-b border-gray-100">
                 <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Image</th>
                 <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Title</th>
                 <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Price</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Bed</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Detail</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Actions</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Bed Type</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Details</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3 text-right">Actions</th>
             </tr>
         </thead>
         <tbody class="divide-y divide-gray-50">
             @foreach($data as $i)
             <tr class="hover:bg-gray-50 transition-colors">
                 <td class="px-6 py-3">
-                    <img src="{{ asset('img_uploads/' . $i->image) }}" class="h-12 w-16 rounded-lg object-cover" alt="{{ $i->title }}">
+                    <div class="w-12 h-10 rounded-lg overflow-hidden border border-gray-100">
+                        <img src="{{ asset('img_uploads/' . $i->image) }}" class="w-full h-full object-cover" onerror="this.src='/img_uploads/placeholder.png'">
+                    </div>
                 </td>
                 <td class="px-6 py-3 font-medium text-gray-800">{{ $i->title }}</td>
                 <td class="px-6 py-3 text-gray-600">₹{{ $i->price }}</td>
                 <td class="px-6 py-3 text-gray-600">{{ $i->bed }}</td>
                 <td class="px-6 py-3 text-gray-500 max-w-xs truncate">{{ $i->detail }}</td>
-                <td class="px-6 py-3 flex items-center gap-2">
-                    <a href="/admin/updateroom/{{ $i->id }}" class="inline-flex items-center gap-1 text-xs font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-md no-underline transition-colors">
-                        <i data-feather="edit-2" style="width:12px;height:12px;"></i> Edit
-                    </a>
-                    <a href="/admin/deleteroom/{{ $i->id }}" class="inline-flex items-center gap-1 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-md no-underline transition-colors"
-                       onclick="return confirm('Delete this room?')">
-                        <i data-feather="trash-2" style="width:12px;height:12px;"></i> Delete
-                    </a>
+                <td class="px-6 py-3 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="/admin/updateroom/{{ $i->id }}" class="p-1.5 text-gray-400 hover:text-gray-900 transition-colors">
+                            <i data-feather="edit-3" style="width:16px;height:16px;"></i>
+                        </a>
+                        <a href="/admin/deleteroom/{{ $i->id }}" class="p-1.5 text-gray-400 hover:text-red-600 transition-colors" onclick="return confirm('Delete this room?')">
+                            <i data-feather="trash-2" style="width:16px;height:16px;"></i>
+                        </a>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    @if(count($data) === 0)
+    
+    @if(count($data) > 0)
+    <div class="px-6 py-4 border-t border-gray-50">
+        {{ $data->links() }}
+    </div>
+    @else
     <div class="text-center py-12 text-gray-400">
-        <i data-feather="home" style="width:40px;height:40px;" class="mx-auto mb-3 opacity-40"></i>
-        <p class="text-sm">No rooms found.</p>
+        <p class="text-sm">No rooms found matching your criteria.</p>
     </div>
     @endif
+</div>
 </div>
 
 @endsection

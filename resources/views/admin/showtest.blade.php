@@ -10,39 +10,56 @@
     </a>
 </div>
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-    <table class="w-full text-sm">
-        <thead>
-            <tr class="bg-gray-50 border-b border-gray-100">
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Photo</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Name</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Designation</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Message</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Actions</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-50">
-            @foreach($data2 as $i)
-            <tr class="hover:bg-gray-50 transition-colors">
-                <td class="px-6 py-3">
-                    <img src="{{ asset('img_uploads/' . $i->image) }}" class="h-10 w-10 rounded-full object-cover" alt="{{ $i->name }}">
-                </td>
-                <td class="px-6 py-3 font-medium text-gray-800">{{ $i->name }}</td>
-                <td class="px-6 py-3 text-gray-500">{{ $i->dsg }}</td>
-                <td class="px-6 py-3 text-gray-500 max-w-xs truncate">{{ $i->message }}</td>
-                <td class="px-6 py-3 flex items-center gap-2">
-                    <a href="/admin/updatetest/{{ $i->id }}" class="inline-flex items-center gap-1 text-xs font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-md no-underline transition-colors">
-                        <i data-feather="edit-2" style="width:12px;height:12px;"></i> Edit
-                    </a>
-                    <a href="/admin/deletetest/{{ $i->id }}" class="inline-flex items-center gap-1 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-md no-underline transition-colors"
-                       onclick="return confirm('Delete this testimonial?')">
-                        <i data-feather="trash-2" style="width:12px;height:12px;"></i> Delete
-                    </a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+@include('admin.partials.filters')
+
+<div id="admin-table-container">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="bg-gray-50 border-b border-gray-100">
+                    <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Photo</th>
+                    <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Name</th>
+                    <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Designation</th>
+                    <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Message</th>
+                    <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3 text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                @foreach($data2 as $i)
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-3">
+                        <div class="w-10 h-10 rounded-lg overflow-hidden border border-gray-100">
+                            <img src="{{ asset('img_uploads/' . $i->image) }}" class="w-full h-full object-cover" onerror="this.src='/img_uploads/placeholder.png'">
+                        </div>
+                    </td>
+                    <td class="px-6 py-3 font-medium text-gray-800">{{ $i->name }}</td>
+                    <td class="px-6 py-3 text-gray-600">{{ $i->dsg }}</td>
+                    <td class="px-6 py-3 text-gray-500 max-w-xs truncate">{{ $i->message }}</td>
+                    <td class="px-6 py-3 text-right">
+                        <div class="flex items-center justify-end gap-2">
+                            <a href="/admin/updatetest/{{ $i->id }}" class="p-1.5 text-gray-400 hover:text-gray-900 transition-colors">
+                                <i data-feather="edit-3" style="width:16px;height:16px;"></i>
+                            </a>
+                            <a href="/admin/deletetest/{{ $i->id }}" class="p-1.5 text-gray-400 hover:text-red-600 transition-colors" onclick="return confirm('Delete this testimonial?')">
+                                <i data-feather="trash-2" style="width:16px;height:16px;"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        @if(count($data2) > 0)
+        <div class="px-6 py-4 border-t border-gray-50">
+            {{ $data2->links() }}
+        </div>
+        @else
+        <div class="text-center py-12 text-gray-400">
+            <p class="text-sm">No testimonials found.</p>
+        </div>
+        @endif
+    </div>
 </div>
 
 @endsection
