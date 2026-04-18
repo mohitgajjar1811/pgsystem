@@ -1,32 +1,38 @@
 @extends('layouts/admin')
-
-@section('title', 'Show Login')
+@section('title', 'Login Records')
 
 @section('content')
-<table class="table">
-  <thead>
-    <tr>
-<!--      <th scope="col">FNAME</th>-->
-<!--      <th scope="col">LNAME</th>-->
-      <th scope="col">EMAIL</th>
-      <th scope="col" typeof="password">PASSWORD</th>
-<!--      <th scope="col">DOB</th>-->
-<!--      <th scope="col">PHONE</th>-->
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($data13 as $i)
-    <tr>
-<!--      <th scope="row">{{ $i->firstname }}</th>-->
-<!--      <td>{{ $i->lastname }}</td>-->
-      <td>{{ $i->email }}</td>
-      <td>********</td>
-<!--      <td>{{ $i->dob }}</td>-->
-<!--      <td>{{ $i->phoneno }}</td>-->
-<!--      <td><a href="updatecontact/{{ $i->id }}">Edit</a></td>-->
-      <td><a href="/admin/deleteregistration/{{ $i->id }}">Delete</a></td>
-    </tr>
-  @endforeach
-  </tbody>
-</table>
+
+<div class="flex items-center justify-between mb-6">
+    <h1 class="text-xl font-semibold text-gray-800">Login Records</h1>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <table class="w-full text-sm">
+        <thead>
+            <tr class="bg-gray-50 border-b border-gray-100">
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">#</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Email</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Password</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-50">
+            @foreach($data13 as $index => $i)
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-3 text-gray-400 text-xs">{{ $index + 1 }}</td>
+                <td class="px-6 py-3 text-gray-700">{{ $i->email }}</td>
+                <td class="px-6 py-3 text-gray-400 tracking-widest">••••••••</td>
+                <td class="px-6 py-3">
+                    <a href="/admin/deleteregistration/{{ $i->id }}" class="inline-flex items-center gap-1 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-md no-underline transition-colors"
+                       onclick="return confirm('Delete this record?')">
+                        <i data-feather="trash-2" style="width:12px;height:12px;"></i> Delete
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 @endsection

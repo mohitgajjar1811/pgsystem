@@ -1,34 +1,44 @@
 @extends('layouts/admin')
-
-@section('title', 'Show Order')
+@section('title', 'Orders')
 
 @section('content')
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Amount</th>
-      <th scope="col">User ID</th>
-      <th scope="col">Email</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Room Details</th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($data13 as $i)
-    <tr>
-      <th scope="row">{{ $i->id }}</th>
-      <td>{{ $i->amt }}</td>
-      <td>{{ $i->uid }}</td>
-      <td>{{ $i->email }}</td>
-      <td>{{ $i->firstname }}</td>
-      <td>{{ $i->blog_data }}</td>
-      <!-- No Update for Order -->
-      <td><a href="/admin/deleteorder/{{ $i->id }}">Delete</a></td>
-    </tr>
-  @endforeach
-  </tbody>
-</table>
-  </div>
-<!--</div>-->
+
+<div class="flex items-center justify-between mb-6">
+    <h1 class="text-xl font-semibold text-gray-800">Orders</h1>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <table class="w-full text-sm">
+        <thead>
+            <tr class="bg-gray-50 border-b border-gray-100">
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">ID</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Amount</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">User ID</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Email</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Name</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Room Details</th>
+                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-50">
+            @foreach($data13 as $i)
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-3 text-gray-400 font-mono text-xs">#{{ $i->id }}</td>
+                <td class="px-6 py-3 font-semibold text-gray-800">₹{{ $i->amt }}</td>
+                <td class="px-6 py-3 text-gray-600">{{ $i->uid }}</td>
+                <td class="px-6 py-3 text-gray-600">{{ $i->email }}</td>
+                <td class="px-6 py-3 font-medium text-gray-800">{{ $i->firstname }}</td>
+                <td class="px-6 py-3 text-gray-500 max-w-xs truncate">{{ $i->blog_data }}</td>
+                <td class="px-6 py-3">
+                    <a href="/admin/deleteorder/{{ $i->id }}" class="inline-flex items-center gap-1 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-md no-underline transition-colors"
+                       onclick="return confirm('Delete this order?')">
+                        <i data-feather="trash-2" style="width:12px;height:12px;"></i> Delete
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 @endsection
