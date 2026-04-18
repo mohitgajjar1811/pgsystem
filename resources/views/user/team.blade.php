@@ -203,7 +203,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="rounded shadow overflow-hidden">
                     <div class="position-relative">
-                        <img class="img-fluid" src="{{ asset('storage/' . $i->image) }}" alt="">
+                        <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">
                         <!-- Social Media Links (if needed) -->
 <!--                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">-->
 <!--                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>-->
@@ -233,7 +233,7 @@
 <!--                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">-->
 <!--                        <div class="rounded shadow overflow-hidden">-->
 <!--                            <div class="position-relative">-->
-<!--                                <img class="img-fluid" src="{{ asset('storage/' . $i->image) }}" alt="">-->
+<!--                                <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">-->
 <!--&lt;!&ndash;                                <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">&ndash;&gt;-->
 <!--&lt;!&ndash;                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>&ndash;&gt;-->
 <!--&lt;!&ndash;                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>&ndash;&gt;-->

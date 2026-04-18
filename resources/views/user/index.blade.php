@@ -310,7 +310,7 @@
                     @if($loop->iteration <= 3) <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="room-item shadow rounded overflow-hidden">
                             <div class="position-relative">
-                                <img class="img-fluid" src="{{ asset('storage/' . $i->image) }}" alt="">
+                                <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">
                                 <small
                                     class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">
                                     {{ $i->price }}</small>
@@ -364,7 +364,7 @@
     <!--                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">-->
     <!--                        <div class="room-item shadow rounded overflow-hidden">-->
     <!--                            <div class="position-relative">-->
-    <!--                                <img class="img-fluid" src="{{ asset('storage/' . $i->image) }}" alt="">-->
+    <!--                                <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">-->
     <!--                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{ $i->price }}</small>-->
     <!--                            </div>-->
     <!--                            <div class="p-4 mt-2">-->
@@ -393,7 +393,7 @@
     <!--                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">-->
     <!--                        <div class="room-item shadow rounded overflow-hidden">-->
     <!--                            <div class="position-relative">-->
-    <!--                                <img class="img-fluid" src="{{ asset('storage/' . $i->image) }}" alt="">-->
+    <!--                                <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">-->
     <!--                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{ $i->price }}</small>-->
     <!--                            </div>-->
     <!--                            <div class="p-4 mt-2">-->
@@ -422,7 +422,7 @@
     <!--                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">-->
     <!--                        <div class="room-item shadow rounded overflow-hidden">-->
     <!--                            <div class="position-relative">-->
-    <!--                                <img class="img-fluid" src="{{ asset('storage/' . $i->image) }}" alt="">-->
+    <!--                                <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">-->
     <!--                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{ $i->price }}</small>-->
     <!--                            </div>-->
     <!--                            <div class="p-4 mt-2">-->
@@ -593,7 +593,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="rounded shadow overflow-hidden">
                         <div class="position-relative">
-                            <img class="img-fluid" src="{{ asset('storage/' . $i->image) }}" alt="">
+                            <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">
                             <!-- Social Media Links (if needed) -->
                             <!--                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">-->
                             <!--                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>-->
@@ -701,7 +701,7 @@
                         <!--                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">-->
                         <!--                        <p>{{ $i->message }}</p>-->
                         <!--                        <div class="d-flex align-items-center">-->
-                        <!--                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('storage/' . $i->image) }}" style="width: 45px; height: 45px;">-->
+                        <!--                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('img_uploads/' . $i->image) }}" style="width: 45px; height: 45px;">-->
                         <!--                            <div class="ps-3">-->
                         <!--                                <h6 class="fw-bold mb-1">{{ $i->name }}</h6>-->
                         <!--                                <small>{{ $i->dsg }}</small>-->
@@ -713,7 +713,7 @@
                         <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
                             <p>{{ $i->message }}</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('storage/' . $i->image) }}"
+                                <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('img_uploads/' . $i->image) }}"
                                     style="width: 45px; height: 45px;">
                                 <div class="ps-3">
                                     <h6 class="fw-bold mb-1">{{ $i->name }}</h6>

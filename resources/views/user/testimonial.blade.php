@@ -221,7 +221,7 @@
 <!--                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">-->
 <!--                        <p>{{ $i->message }}</p>-->
 <!--                        <div class="d-flex align-items-center">-->
-<!--                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('storage/' . $i->image) }}" style="width: 45px; height: 45px;">-->
+<!--                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('img_uploads/' . $i->image) }}" style="width: 45px; height: 45px;">-->
 <!--                            <div class="ps-3">-->
 <!--                                <h6 class="fw-bold mb-1">{{ $i->name }}</h6>-->
 <!--                                <small>{{ $i->dsg }}</small>-->
@@ -233,7 +233,7 @@
                     <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
                         <p>{{ $i->message }}</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('storage/' . $i->image) }}" style="width: 45px; height: 45px;">
+                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('img_uploads/' . $i->image) }}" style="width: 45px; height: 45px;">
                             <div class="ps-3">
                                 <h6 class="fw-bold mb-1">{{ $i->name }}</h6>
                                 <small>{{ $i->dsg }}</small>
