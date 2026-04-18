@@ -60,8 +60,10 @@ class AdminController extends Controller
             $obj->name = $request->input('name');
             $obj->dsg = $request->input('dsg');
             if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('image', 'public');
-                $obj->image = $path;
+                $file = $request->file('image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img_uploads/image'), $filename);
+                $obj->image = 'image/' . $filename;
             } else {
                 $obj->image = "";
             }
@@ -102,8 +104,10 @@ class AdminController extends Controller
             $data11->name = $request->input('name');
             $data11->dsg = $request->input('dsg');
             if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('image', 'public');
-                $data11->image = $path;
+                $file = $request->file('image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img_uploads/image'), $filename);
+                $data11->image = 'image/' . $filename;
             }
             $data11->save();
             return redirect('/admin/showteam');
@@ -120,8 +124,10 @@ class AdminController extends Controller
             $obj->title = $request->input('title');
             $obj->detail = $request->input('detail');
             if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('image', 'public');
-                $obj->image = $path;
+                $file = $request->file('image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img_uploads/image'), $filename);
+                $obj->image = 'image/' . $filename;
             } else {
                 $obj->image = "";
             }
@@ -144,8 +150,10 @@ class AdminController extends Controller
             $data->title = $request->input('title');
             $data->detail = $request->input('detail');
             if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('image', 'public');
-                $data->image = $path;
+                $file = $request->file('image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img_uploads/image'), $filename);
+                $data->image = 'image/' . $filename;
             }
             $data->save();
             return redirect('/admin/showroom');
@@ -176,8 +184,10 @@ class AdminController extends Controller
             $obj->dsg = $request->input('dsg');
             $obj->message = $request->input('message');
             if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('image', 'public');
-                $obj->image = $path;
+                $file = $request->file('image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img_uploads/image'), $filename);
+                $obj->image = 'image/' . $filename;
             } else {
                 $obj->image = "";
             }
@@ -199,8 +209,10 @@ class AdminController extends Controller
             $data2->dsg = $request->input('dsg');
             $data2->message = $request->input('message');
             if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('image', 'public');
-                $data2->image = $path;
+                $file = $request->file('image');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path('img_uploads/image'), $filename);
+                $data2->image = 'image/' . $filename;
             }
             $data2->save();
             return redirect('/admin/showtest');

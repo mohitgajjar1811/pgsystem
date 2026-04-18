@@ -29,24 +29,26 @@
     <div class="flex h-screen overflow-hidden">
 
         {{-- ========== SIDEBAR ========== --}}
-        <aside class="w-48 flex-shrink-0 bg-gray-900 flex flex-col" style="width: 192px;">
+        <aside class="w-64 flex-shrink-0 bg-gray-900 flex flex-col" style="width: 256px;">
 
             {{-- Brand --}}
-            <a href="/admin" class="flex items-center px-5 py-4 border-b border-gray-700 no-underline flex-shrink-0">
-                <span class="text-white font-bold text-sm tracking-wide">SUNRISE</span>
-                <span class="text-red-500 font-bold text-sm ml-1">ADMIN</span>
-            </a>
+            <div class="h-16 flex items-center justify-center border-b border-gray-800 flex-shrink-0">
+                <a href="/admin" class="flex items-center no-underline">
+                    <span class="text-white font-bold text-lg tracking-wide uppercase">SUNRISE</span>
+                    <span class="text-red-500 font-bold text-lg ml-1 uppercase">ADMIN</span>
+                </a>
+            </div>
 
             {{-- Navigation --}}
-            <nav class="flex-1 overflow-y-auto py-2">
+            <nav class="flex-1 overflow-y-auto py-4">
                 <ul class="list-none m-0 p-0">
 
                     {{-- Dashboard --}}
                     <li>
                         <a href="/admin"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="grid" class="nav-icon"></i>
+                            <i data-feather="grid" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
@@ -54,9 +56,9 @@
                     {{-- Rooms --}}
                     <li>
                         <a href="/admin/showroom"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showroom') || Request::is('admin/addroom') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="home" class="nav-icon"></i>
+                            <i data-feather="home" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Rooms</span>
                         </a>
                     </li>
@@ -64,9 +66,9 @@
                     {{-- Team --}}
                     <li>
                         <a href="/admin/showteam"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showteam') || Request::is('admin/addteam') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="users" class="nav-icon"></i>
+                            <i data-feather="users" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Team</span>
                         </a>
                     </li>
@@ -74,9 +76,9 @@
                     {{-- Testimonials --}}
                     <li>
                         <a href="/admin/showtest"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showtest') || Request::is('admin/addtest') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="star" class="nav-icon"></i>
+                            <i data-feather="star" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Testimonials</span>
                         </a>
                     </li>
@@ -84,9 +86,9 @@
                     {{-- Newsletter --}}
                     <li>
                         <a href="/admin/shownews"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/shownews') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="send" class="nav-icon"></i>
+                            <i data-feather="send" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Newsletter</span>
                         </a>
                     </li>
@@ -94,9 +96,9 @@
                     {{-- Bookings --}}
                     <li>
                         <a href="/admin/showbooking"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showbooking') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="list" class="nav-icon"></i>
+                            <i data-feather="list" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Bookings</span>
                         </a>
                     </li>
@@ -104,9 +106,9 @@
                     {{-- Registrations --}}
                     <li>
                         <a href="/admin/showregistration"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showregistration') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="user-plus" class="nav-icon"></i>
+                            <i data-feather="user-plus" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Registrations</span>
                         </a>
                     </li>
@@ -114,9 +116,9 @@
                     {{-- Orders --}}
                     <li>
                         <a href="/admin/showorder"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showorder') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="shopping-cart" class="nav-icon"></i>
+                            <i data-feather="shopping-cart" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Orders</span>
                         </a>
                     </li>
@@ -124,9 +126,9 @@
                     {{-- Checkouts --}}
                     <li>
                         <a href="/admin/showcheckout"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showcheckout') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="check-circle" class="nav-icon"></i>
+                            <i data-feather="check-circle" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Checkouts</span>
                         </a>
                     </li>
@@ -134,9 +136,9 @@
                     {{-- Contact Messages --}}
                     <li>
                         <a href="/admin/showcontact"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showcontact') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="mail" class="nav-icon"></i>
+                            <i data-feather="mail" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Contact</span>
                         </a>
                     </li>
@@ -144,9 +146,9 @@
                     {{-- Appointments --}}
                     <li>
                         <a href="/admin/showappointment"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showappointment') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="calendar" class="nav-icon"></i>
+                            <i data-feather="calendar" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Appointments</span>
                         </a>
                     </li>
@@ -154,9 +156,9 @@
                     {{-- Login Records --}}
                     <li>
                         <a href="/admin/showlogin"
-                           class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium no-underline transition-colors duration-150
+                           class="flex items-center gap-4 px-6 py-3 text-base font-medium no-underline transition-colors duration-150
                                   {{ Request::is('admin/showlogin') ? 'bg-gray-800 text-white border-l-4 border-red-500' : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200 border-l-4 border-transparent' }}">
-                            <i data-feather="log-in" class="nav-icon"></i>
+                            <i data-feather="log-in" class="nav-icon" style="width:18px; height:18px;"></i>
                             <span>Login Records</span>
                         </a>
                     </li>
