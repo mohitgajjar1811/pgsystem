@@ -36,7 +36,7 @@
 </head>
 
 <body>
-<div class="container-xxl bg-white p-0">
+<div class="container-fluid bg-white p-0">
     <!-- Spinner Start -->
     <div id="spinner"
          class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -135,7 +135,7 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 p-0" style="background-image: url(img/carousel-1.jpg);">
         <div class="container-fluid page-header-inner py-5">
-            <div class="container text-center pb-5">
+            <div class="container-fluid text-center pb-5">
                 <h1 class="display-3 text-white mb-3 animated slideInDown">Rooms</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center text-uppercase">
@@ -197,8 +197,8 @@
 
     <!--Room Start -->
 
-    <div class="container-xxl py-5">
-        <div class="container">
+    <div class="container-fluid py-5">
+        <div class="container-fluid">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title text-center text-primary text-uppercase">Our Rooms</h6>
                 <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
@@ -443,7 +443,7 @@
 
 
     <!-- Newsletter Start -->
-    <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="row justify-content-center">
                 <div class="col-lg-10 border rounded p-1">
                     <div class="border rounded text-center p-1">
@@ -466,7 +466,7 @@
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
-        <div class="container pb-5">
+        <div class="container-fluid pb-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-4">
                     <div class="bg-primary rounded p-4">
@@ -506,7 +506,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">

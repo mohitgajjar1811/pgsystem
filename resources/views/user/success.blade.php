@@ -13,7 +13,7 @@
     }
 
     .container {
-        max-width: 380px;
+        width: 100%;
         margin: 50px auto;
         overflow: hidden;
     }

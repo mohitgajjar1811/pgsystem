@@ -37,7 +37,7 @@
 
 
 <body>
-    <div class="container-xxl bg-white p-0">
+    <div class="container-fluid bg-white p-0">
         <!-- Spinner Start -->
         <div id="spinner"
             class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -232,8 +232,8 @@
 
 
         <!-- About Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
+        <div class="container-fluid py-5">
+            <div class="container-fluid">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
                         <h6 class="section-title text-start text-primary text-uppercase">About Us</h6>
@@ -299,8 +299,8 @@
 
 
         <!-- Room Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
+        <div class="container-fluid py-5">
+            <div class="container-fluid">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="section-title text-center text-primary text-uppercase">Our Rooms</h6>
                     <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
@@ -496,8 +496,8 @@
 
 
     <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
+    <div class="container-fluid py-5">
+        <div class="container-fluid">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title text-center text-primary text-uppercase">Our Services</h6>
                 <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Services</span></h1>
@@ -582,8 +582,8 @@
 
 
     <!-- Team Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
+    <div class="container-fluid py-5">
+        <div class="container-fluid">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title text-center text-primary text-uppercase">Our Team</h6>
                 <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Staffs</span></h1>
@@ -688,27 +688,27 @@
     <!-- Team End -->
 
     <!-- Testimonial start -->
-    <div class="container-xxl py-5">
-        <div class="container">
+    <div class="container-fluid py-5">
+        <div class="container-fluid">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title text-center text-primary text-uppercase">Our Testimonial</h6>
                 <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Testimonial</span></h1>
             </div>
-            <div class="container-xxl testimonial mt-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s"
+            <div class="container-fluid testimonial mt-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s"
                 style="margin-bottom: 90px;">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="owl-carousel testimonial-carousel py-5">
-                        <!--                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">-->
-                        <!--                        <p>{{ $i->message }}</p>-->
-                        <!--                        <div class="d-flex align-items-center">-->
-                        <!--                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('img_uploads/' . $i->image) }}" style="width: 45px; height: 45px;">-->
-                        <!--                            <div class="ps-3">-->
-                        <!--                                <h6 class="fw-bold mb-1">{{ $i->name }}</h6>-->
-                        <!--                                <small>{{ $i->dsg }}</small>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                        <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>-->
-                        <!--                    </div>-->
+                        {{--                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                        <p>{{ $i->message }}</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('img_uploads/' . $i->image) }}" style="width: 45px; height: 45px;">
+                            <div class="ps-3">
+                                <h6 class="fw-bold mb-1">{{ $i->name }}</h6>
+                                <small>{{ $i->dsg }}</small>
+                            </div>
+                        </div>
+                        <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                    </div> --}}
                         @foreach($data2 as $i)
                         <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
                             <p>{{ $i->message }}</p>
@@ -724,17 +724,17 @@
                                 class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
                         </div>
                         @endforeach
-                        <!--                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">-->
-                        <!--                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd et erat magna eos</p>-->
-                        <!--                        <div class="d-flex align-items-center">-->
-                        <!--                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('img/testimonial-3.jpg') }}" style="width: 45px; height: 45px;">-->
-                        <!--                            <div class="ps-3">-->
-                        <!--                                <h6 class="fw-bold mb-1">Client Name</h6>-->
-                        <!--                                <small>Profession</small>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                        <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>-->
-                        <!--                    </div>-->
+                        {{--                    <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                        <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd et erat magna eos</p>
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid flex-shrink-0 rounded" src="{{ asset('img/testimonial-3.jpg') }}" style="width: 45px; height: 45px;">
+                            <div class="ps-3">
+                                <h6 class="fw-bold mb-1">Client Name</h6>
+                                <small>Profession</small>
+                            </div>
+                        </div>
+                        <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                    </div>--}}
                     </div>
                 </div>
             </div>
@@ -742,7 +742,7 @@
 
 
             <!-- Newsletter Start -->
-            <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container-fluid newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="row justify-content-center">
                     <div class="col-lg-10 border rounded p-1">
                         <div class="border rounded text-center p-1">
@@ -768,7 +768,7 @@
 
             <!-- Footer Start -->
             <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
-                <div class="container pb-5">
+                <div class="container-fluid pb-5">
                     <div class="row g-5">
                         <div class="col-md-6 col-lg-4">
                             <div class="bg-primary rounded p-4">
@@ -811,7 +811,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="container-fluid">
                     <div class="copyright">
                         <div class="row">
                             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">

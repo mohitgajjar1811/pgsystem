@@ -12,7 +12,7 @@
             padding: 0;
         }
         .container {
-            width: 80%;
+            width: 100%;
             margin: 50px auto;
             background: #fff;
             border-radius: 10px;
@@ -107,8 +107,7 @@
     }
 
     .container {
-        width: 80%;
-        max-width: 600px; /* Set a maximum width */
+        width: 100%;
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
