@@ -76,6 +76,17 @@
 }
 
 
+@media (min-width: 992px) {
+    .container-fluid.sticky-top {
+        top: -100px;
+        transition: .5s;
+    }
+
+    .container-fluid.sticky-top.shadow-sm {
+        top: 0;
+    }
+}
+
 /*** Navbar ***/
 .navbar-dark .navbar-nav .nav-link {
     margin-right: 30px;
