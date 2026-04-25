@@ -62,7 +62,7 @@
                         <a href="/loadroom" class="nav-item nav-link {{ Request::is('loadroom') ? 'active' : '' }}">Explore Rooms</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0 shadow border-0">
+                            <div class="dropdown-menu rounded-0 m-0 shadow border-0 start-50 translate-middle-x">
                                 <a href="/loadteam" class="dropdown-item">Our Team</a>
                                 <a href="/loadappointment" class="dropdown-item">Appointment</a>
                                 <a href="/loadtestimonial" class="dropdown-item">Testimonial</a>
