@@ -424,7 +424,7 @@
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a class="service-item rounded" href="">
+                    <a class="service-item rounded" href="/loadservice">
                         <div class="service-icon bg-transparent border rounded p-1">
                             <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
                                 <i class="fa fa-hotel fa-2x text-primary"></i>
@@ -437,7 +437,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <a class="service-item rounded" href="">
+                    <a class="service-item rounded" href="/loadservice">
                         <div class="service-icon bg-transparent border rounded p-1">
                             <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
                                 <i class="fa fa-wifi fa-2x text-primary"></i>
@@ -450,7 +450,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a class="service-item rounded" href="">
+                    <a class="service-item rounded" href="/loadservice">
                         <div class="service-icon bg-transparent border rounded p-1">
                             <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
                                 <i class="fa fa-book fa-2x text-primary"></i>
@@ -660,8 +660,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
             <!-- Testimonial End -->
 
 

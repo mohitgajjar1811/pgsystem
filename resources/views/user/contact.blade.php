@@ -221,17 +221,7 @@
 <!--                        <div class="col-12">-->
 <!--                            <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>-->
 <!--                        </div>-->
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    <!-- Replaced invalid closing tags with correct closing tags -->
                 </div>
             </div>
         </div>
