@@ -13,6 +13,7 @@ use App\Models\Signup;
 use App\Models\Apt;
 use App\Models\Newsletter;
 use App\Models\Order;
+use App\Models\SmtpSetting;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -340,5 +341,19 @@ class AdminController extends Controller
     public function deletecheckout($id) {
         Cout::where('id', $id)->delete();
         return redirect('/admin/showcheckout');
+    }
+
+    public function smtpSettings(Request $request) {
+        $smtp = SmtpSetting::first();
+        if ($request->isMethod('post')) {
+            $data = $request->only(['host', 'port', 'encryption', 'username', 'password', 'from_name', 'from_email', 'admin_email']);
+            if ($smtp) {
+                $smtp->update($data);
+            } else {
+                SmtpSetting::create($data);
+            }
+            return redirect('/admin/smtp-settings')->with('success', 'SMTP settings saved successfully! Emails will now be sent using your configured server.');
+        }
+        return view('admin.smtp_settings', compact('smtp'));
     }
 }

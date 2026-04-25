@@ -71,4 +71,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/showtest', [AdminController::class, 'showtest']);
     Route::match(['get', 'post'], '/updatetest/{id}', [AdminController::class, 'updatetest']);
     Route::get('/deletetest/{id}', [AdminController::class, 'deletetest']);
+
+    Route::match(['get', 'post'], '/smtp-settings', [AdminController::class, 'smtpSettings']);
 });

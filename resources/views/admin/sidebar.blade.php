@@ -54,6 +54,7 @@
                 ['title' => 'Add New Team', 'link' => '/admin/addteam'],
                 ['title' => 'Add New Room', 'link' => '/admin/addroom'],
                 ['title' => 'Add New Testimonial', 'link' => '/admin/addtest'],
+                ['title' => 'SMTP Email Settings', 'link' => '/admin/smtp-settings'],
             ];
         @endphp
 

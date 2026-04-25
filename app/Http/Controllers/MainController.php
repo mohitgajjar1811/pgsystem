@@ -13,7 +13,9 @@ use App\Models\Signup;
 use App\Models\Apt;
 use App\Models\Newsletter;
 use App\Models\Order;
+use App\Models\SmtpSetting;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
 use Razorpay\Api\Api;
 
 class MainController extends Controller
@@ -195,6 +197,45 @@ class MainController extends Controller
                 $order->beds = $postData['bed'] ?? 1;
                 $order->save();
 
+                // --- Send Emails via Admin SMTP ---
+                $smtp = $this->configureSmtp();
+                if ($smtp) {
+                    // Get joining date from latest booking record for this room
+                    $bookingRecord = Booking::where('email', $user->email)
+                        ->where('roomname', $postData['roomnme'] ?? null)
+                        ->orderBy('id', 'desc')->first();
+
+                    $emailData = [
+                        'userName'    => $user->firstname . ' ' . $user->lastname,
+                        'userEmail'   => $user->email,
+                        'roomName'    => $postData['roomnme'] ?? 'N/A',
+                        'beds'        => $postData['bed'] ?? 1,
+                        'pricePerBed' => $postData['priceperb'] ?? ($totalValue / max(1, $postData['bed'] ?? 1)),
+                        'deposit'     => $postData['deposite'] ?? 0,
+                        'totalAmount' => $totalValue,
+                        'joiningDate' => $bookingRecord->joiningdate ?? null,
+                        'booking'     => $bookingRecord,
+                    ];
+
+                    try {
+                        // 1. Send booking confirmation to user
+                        Mail::send('emails.booking_confirmation', $emailData, function($msg) use ($user, $smtp) {
+                            $msg->to($user->email, $user->firstname)
+                                ->subject('✅ Booking Confirmed - Sunrise PG');
+                        });
+
+                        // 2. Send admin notification
+                        $adminEmail = $smtp->admin_email ?: $smtp->from_email;
+                        Mail::send('emails.admin_booking_notification', $emailData, function($msg) use ($adminEmail, $smtp) {
+                            $msg->to($adminEmail)
+                                ->subject('🔔 New Booking Alert - Sunrise PG');
+                        });
+                    } catch (\Exception $mailEx) {
+                        // Don't block payment flow if mail fails
+                        \Log::error('Booking email failed: ' . $mailEx->getMessage());
+                    }
+                }
+
                 $blogData = session('blog_data', []);
 
                 return view('user.payment_process', [
@@ -212,6 +253,26 @@ class MainController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Configure Laravel mail using admin's SMTP settings from the database.
+     * Returns false if no settings found.
+     */
+    private function configureSmtp() {
+        $smtp = SmtpSetting::first();
+        if (!$smtp || !$smtp->host || !$smtp->username || !$smtp->password) {
+            return false;
+        }
+        Config::set('mail.default', 'smtp');
+        Config::set('mail.mailers.smtp.host', $smtp->host);
+        Config::set('mail.mailers.smtp.port', $smtp->port);
+        Config::set('mail.mailers.smtp.encryption', $smtp->encryption ?: null);
+        Config::set('mail.mailers.smtp.username', $smtp->username);
+        Config::set('mail.mailers.smtp.password', $smtp->password);
+        Config::set('mail.from.address', $smtp->from_email);
+        Config::set('mail.from.name', $smtp->from_name);
+        return $smtp;
+    }
+
     public function success() {
         return view('user.success');
     }
@@ -221,8 +282,20 @@ class MainController extends Controller
             $obj = new Newsletter();
             $obj->email = $request->input('email');
             $obj->save();
-            // Email sending placeholder: 
-            // Mail::raw('will get new messages from our site', function($msg) use ($obj) { $msg->to($obj->email)->subject('Thank you for registering'); });
+
+            // Send thank you email via admin SMTP
+            $smtp = $this->configureSmtp();
+            if ($smtp) {
+                try {
+                    Mail::send('emails.newsletter_thankyou', [], function($msg) use ($obj) {
+                        $msg->to($obj->email)
+                            ->subject('🎉 Thank You for Subscribing - Sunrise PG Newsletter');
+                    });
+                } catch (\Exception $mailEx) {
+                    \Log::error('Newsletter thank you email failed: ' . $mailEx->getMessage());
+                }
+            }
+
             return redirect('/');
         }
         return redirect('/');
