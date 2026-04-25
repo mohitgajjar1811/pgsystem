@@ -19,7 +19,7 @@
                     <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Mobile</th>
                     <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Joining Date</th>
                     <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Room</th>
-                    <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Note</th>
+                    <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Booked Beds</th>
                     <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Actions</th>
                 </tr>
             </thead>

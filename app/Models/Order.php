@@ -9,7 +9,7 @@ class Order extends Model
     protected $table = 'user_order';
     public $timestamps = false; // Disable default timestamps as Django didn't use them
 
-    protected $fillable = ["uid_id", "amt", "email", "firstname"];
+    protected $fillable = ["uid_id", "amt", "email", "firstname", "roomname", "beds"];
 
     public function user() {
         return $this->belongsTo(Signup::class, 'uid_id', 'id');

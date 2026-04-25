@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [MainController::class, 'loadindex'])->name('index');
 Route::get('/loadabout', [MainController::class, 'loadabout']);
@@ -19,6 +20,13 @@ Route::match(['get', 'post'], '/loadragistration', [MainController::class, 'load
 Route::match(['get', 'post'], '/loadappointment', [MainController::class, 'loadappointment']);
 Route::get('/showappointment', [MainController::class, 'showappointment']);
 Route::post('/News', [MainController::class, 'News']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+    Route::post('/profile/delete', [ProfileController::class, 'deleteAccount'])->name('profile.delete');
+});
 
 Route::get('/loadlogin', function () {
     return view('user.login');

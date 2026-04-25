@@ -228,31 +228,32 @@
                 <div class="col-lg-6">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
 <!--                        <form method="post" action="/checkout/{{ $price }}">-->
-                        <form method="post" action="">
+                        <form id="bookingForm" method="post" action="">
                             @csrf
+                            <input type="hidden" id="remainingBeds" value="{{ $remaining }}">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" name="name" placeholder="Your Name">
+                                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
                                         <label data-model-name="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" name="email" placeholder="Your Email">
+                                        <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                                         <label data-model-name="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" name="mobileno"
-                                               placeholder="Your Mobile Number">
+                                               placeholder="Your Mobile Number" required>
                                         <label data-model-name="mobileno">Your Mobile Number</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="date" class="form-control" name="joiningdate" placeholder="Date">
+                                        <input type="date" class="form-control" name="joiningdate" placeholder="Date" required min="{{ date('Y-m-d') }}">
                                         <label data-model-name="joiningdate">Date</label>
                                     </div>
                                 </div>
@@ -260,21 +261,24 @@
                                     <label data-model-name="adult">Selected Room</label>
                                     <div class="form-floating">
                                         <input type="text" id="selectedroom" name="adult" class="form-control datetimepicker-input"
-                                               value="{{ $data }}">
+                                               value="{{ $data }}" readonly>
                                     </div>
                                 </div>
+                                @php
+                                    $maxBeds = 6;
+                                    if (preg_match('/(\d+)/', $data, $matches)) {
+                                        $maxBeds = (int)$matches[1];
+                                    }
+                                @endphp
                                 <div class="col-12">
                                     <div class="form-floating position-relative">
                                         <select id="dropdown" name="specialrequest"
                                                 class="form-control datetimepicker-input"
                                                 style="background-color: #f8f9fa; padding-right: 30px; appearance: none; -webkit-appearance: none;">
-                                            <option value="1">Please Select Room Beds</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
+                                            <option value="">Please Select Room Beds</option>
+                                            @for ($i = 1; $i <= $maxBeds; $i++)
+                                                <option value="{{ $i }}">{{ $i }}</option>
+                                            @endfor
                                         </select>
                                         <span class="arrow"
                                               style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); pointer-events: none; color: #333;">&#9660;</span>
@@ -295,96 +299,7 @@
     <!-- Booking End -->
 
 
-    <!-- Newsletter Start -->
-    <div class="container-fluid newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 border rounded p-1">
-                <div class="border rounded text-center p-1">
-                    <div class="bg-white rounded text-center p-5">
-                        <h4 class="mb-4">Subscribe Our <span class="text-primary text-uppercase">Newsletter</span></h4>
-                        <form class="form_subscri" method="post" action="/News">
-                            @csrf
-                            <div class="position-relative mx-auto" style="max-width: 400px;">
-                                <input class="form-control w-100 py-3 ps-4 pe-5" type="text"
-                                       placeholder="Enter your email" name="email">
-                                <button type="submit"
-                                        class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Submit
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter Start -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
-        <div class="container-fluid pb-5">
-            <div class="row g-5">
-                <div class="col-md-6 col-lg-4">
-                    <div class="bg-primary rounded p-4">
-                        <a href="index.html"><h1 class="text-white text-uppercase mb-3">SUNRISE PG</h1></a>
-                        <p class="text-white mb-0">
-                            Located in the heart of Ahmedabad. Ideal for students and professionals alike, our PG offers
-                            a convenient and comfortable living space with all the necessary amenities.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Ashram Road, Ahmedabad,</p>
-                    <p class="mb-2"><i class="fa me-3"></i>&nbsp;&nbsp;&nbsp;Gujarat.</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 7016853819</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@sunrise.com</p>
-                </div>
-                <div class="col-lg-5 col-md-12">
-                    <div class="row gy-5 g-4">
-                        <div class="col-md-6">
-                            <h6 class="section-title text-start text-primary text-uppercase mb-4">PAYING GUEST</h6>
-                            <a class="btn btn-link" href="loadabout">About Us</a>
-                            <a class="btn btn-link" href="loadcontact">Contact Us</a>
-                            <a class="btn btn-link" href="/loadservice">Service</a>
-                            <a class="btn btn-link" href="/loadappointment">Appointment</a>
-                            <a class="btn btn-link" href="/loadroom">Explore Residency</a>
-                            <!--                                <a class="btn btn-link" href="">Support</a>-->
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
-                            <a class="btn btn-link" href="/loadservice">Rooms</a>
-                            <a class="btn btn-link" href="/loadservice">WiFi</a>
-                            <a class="btn btn-link" href="/loadservice">Library</a>
-                            <!--                                <a class="btn btn-link" href="">Event & Party</a>-->
-                            <!--                                <a class="btn btn-link" href="">GYM & Yoga</a>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="/#">Sunrise PG</a>, All Right Reserved.
-
-                        <!--/* This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. */-->
-                        <!--							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>-->
-                        <!--                        </div>-->
-                        <!--                        <div class="col-md-6 text-center text-md-end">-->
-                        <!--                            <div class="footer-menu">-->
-                        <!--                                <a href="">Home</a>-->
-                        <!--                                <a href="">Cookies</a>-->
-                        <!--                                <a href="">Help</a>-->
-                        <!--                                <a href="">FQAs</a>-->
-                        <!--                            </div>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+    @include('user.footer')
 
 
     <!-- Back to Top -->
@@ -392,6 +307,7 @@
 </div>
 
 <!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('user/lib/wow/wow.min.js') }}"></script>
@@ -409,6 +325,37 @@
 
 </html>
 <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+        if (!this.checkValidity()) {
+             // Let the browser show the default validation messages for required fields
+             return;
+        }
+
+        var selected = parseInt(document.getElementById("dropdown").value);
+        var remaining = parseInt(document.getElementById("remainingBeds").value);
+
+        if (!selected) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Required',
+                text: 'Please select the number of beds.',
+                confirmButtonColor: '#FEA116'
+            });
+            return;
+        }
+
+        if (selected > remaining) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'warning',
+                title: 'Not Enough Beds!',
+                text: 'Only ' + remaining + ' bed(s) available for this room.',
+                confirmButtonColor: '#FEA116'
+            });
+        }
+    });
+
     document.getElementById("dropdown").addEventListener("change", function() {
         // Get the selected value
         var selectedValue = this.value;

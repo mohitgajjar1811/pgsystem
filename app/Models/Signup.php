@@ -9,7 +9,7 @@ class Signup extends Authenticatable
     protected $table = 'user_signup';
     public $timestamps = false; // Disable default timestamps as Django didn't use them
 
-    protected $fillable = ["firstname", "lastname", "phoneno", "email", "password", "is_admin"];
+    protected $fillable = ["firstname", "lastname", "phoneno", "email", "password", "is_admin", "profile_image"];
 
     protected $casts = [
         'is_admin' => 'boolean',

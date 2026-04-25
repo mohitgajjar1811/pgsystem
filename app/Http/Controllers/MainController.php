@@ -32,10 +32,15 @@ class MainController extends Controller
             $obj->joiningdate = $request->input('joiningdate');
             $obj->adult = $request->input('adult');
             $obj->specialrequest = $request->input('specialrequest');
+            $obj->roomname = $title;
             $obj->save();
             return redirect('/checkout/' . $price);
         }
-        return view('user.booking', ['data' => $title, 'price' => $price]);
+        $room = Blog::where('title', $title)->first();
+        $bookedCount = Order::where('roomname', $title)->sum('beds');
+        $remaining = $room ? ($room->bed - $bookedCount) : 0;
+        
+        return view('user.booking', ['data' => $title, 'price' => $price, 'remaining' => $remaining]);
     }
 
     public function loadcontact(Request $request) {
@@ -68,6 +73,10 @@ class MainController extends Controller
 
     public function loadindex() {
         $data = Blog::all();
+        foreach ($data as $room) {
+            $bookedCount = Order::where('roomname', $room->title)->sum('beds');
+            $room->remaining_beds = $room->bed - $bookedCount;
+        }
         $data11 = Team::all();
         $data2 = Test::all();
         return view('user.index', ['data' => $data, 'data11' => $data11, 'data2' => $data2]);
@@ -75,6 +84,10 @@ class MainController extends Controller
 
     public function loadroom(Request $request) {
         $data = Blog::all();
+        foreach ($data as $room) {
+            $bookedCount = Order::where('roomname', $room->title)->sum('beds');
+            $room->remaining_beds = $room->bed - $bookedCount;
+        }
         $request->session()->put('blog_data', $data->toArray());
         return view('user.room', ['data' => $data]);
     }
@@ -178,6 +191,8 @@ class MainController extends Controller
                 $order->uid_id = $userId;
                 $order->email = $user->email;
                 $order->firstname = $user->firstname;
+                $order->roomname = $postData['roomnme'] ?? null;
+                $order->beds = $postData['bed'] ?? 1;
                 $order->save();
 
                 $blogData = session('blog_data', []);
