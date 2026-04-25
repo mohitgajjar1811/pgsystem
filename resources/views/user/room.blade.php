@@ -125,7 +125,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="room-item shadow rounded overflow-hidden">
                         <div class="position-relative">
-                            <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">
+                            <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="Room Image" style="width: 100%; height: 250px; object-fit: cover;">
                             <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{ $i->price }}</small>
                         </div>
 
@@ -148,7 +148,10 @@
                                 <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>{{ $i->bed }}</small>
                                 <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
                             </div>
-                            <p class="text-body mb-3">{{ $i->detail }}</p>
+                            <div class="room-desc-wrapper mb-3">
+                                <p class="text-body mb-1 room-desc" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; transition: all 0.3s ease;">{{ $i->detail }}</p>
+                                <a href="javascript:void(0);" class="read-more-btn text-primary" style="display: none; font-size: 14px; font-weight: 600; text-decoration: none;">Read More</a>
+                            </div>
                             <div class="d-flex justify-content-between">
                                 <a class="btn btn-sm btn-primary rounded py-2 px-2" href="/loadappointment">SCHEDULE A
                                     VISIT</a>
@@ -380,6 +383,32 @@
 <!-- Template Javascript -->
 <script src="{{ asset('user/js/main.js') }}"></script>
 
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('.room-desc-wrapper').each(function() {
+                var wrapper = $(this);
+                var desc = wrapper.find('.room-desc')[0];
+                var btn = wrapper.find('.read-more-btn');
+                
+                if (desc.scrollHeight > desc.clientHeight || desc.scrollHeight > 75) {
+                    btn.show();
+                    btn.off('click').on('click', function() {
+                        wrapper.toggleClass('is-expanded');
+                        var $desc = $(desc);
+                        if (wrapper.hasClass('is-expanded')) {
+                            $desc.css('-webkit-line-clamp', 'unset');
+                            $(this).text('Read Less');
+                        } else {
+                            $desc.css('-webkit-line-clamp', '3');
+                            $(this).text('Read More');
+                        }
+                    });
+                }
+            });
+        }, 100);
+    });
+</script>
 </body>
 
 </html>

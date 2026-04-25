@@ -115,5 +115,29 @@
         }
     });
     
+    // Room description read more toggle
+    $(window).on('load', function() {
+        $('.room-desc-wrapper').each(function() {
+            var wrapper = $(this);
+            var desc = wrapper.find('.room-desc');
+            var btn = wrapper.find('.read-more-btn');
+            
+            if (desc[0].scrollHeight > desc[0].clientHeight || desc[0].scrollHeight > 75) {
+                btn.show();
+                btn.on('click', function() {
+                    wrapper.toggleClass('is-expanded');
+                    if (wrapper.hasClass('is-expanded')) {
+                        desc.css('-webkit-line-clamp', 'unset');
+                        $(this).text('Read Less');
+                    } else {
+                        desc.css('-webkit-line-clamp', '3');
+                        $(this).text('Read More');
+                    }
+                });
+            }
+        });
+    });
+    
 })(jQuery);
+
 

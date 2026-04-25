@@ -157,25 +157,25 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="name" placeholder="Your Name">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
                             <label data-model-name="name">Your Name</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="email" class="form-control" name="email" placeholder="Your Email">
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                             <label data-model-name="email">Your Email</label>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="subject" placeholder="Subject">
+                            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                             <label data-model-name="subject">Subject</label>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a message here" name="message" style="height: 150px"></textarea>
+                            <textarea class="form-control" placeholder="Leave a message here" name="message" style="height: 150px" required></textarea>
                             <label data-model-name="message">Message</label>
                         </div>
                     </div>

@@ -229,38 +229,38 @@
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" name="name" placeholder="Your Name">
+                                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
                                             <label data-model-name="name">Your Name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" name="email" placeholder="Your Email">
+                                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                                             <label data-model-name="email">Your Email</label>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="number" class="form-control" name="phn" placeholder="Phone No.">
+                                            <input type="tel" class="form-control" name="phn" placeholder="Phone No." pattern="[0-9]{10}" maxlength="10" minlength="10" title="Phone number must be exactly 10 digits" required>
                                             <label data-model-name="phn">Phone No:</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="date" class="form-control" name="date" placeholder="Date">
+                                            <input type="date" class="form-control" name="date" placeholder="Date" min="{{ date('Y-m-d') }}" required>
 
                                             <label data-model-name="date">Date</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="time" class="form-control" name="time" placeholder="Time">
+                                            <input type="time" class="form-control" name="time" placeholder="Time" required>
                                             <label data-model-name="time">Time</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a message here" name="msg" style="height: 150px"></textarea>
+                                            <textarea class="form-control" placeholder="Leave a message here" name="msg" style="height: 150px" required></textarea>
                                             <label data-model-name="msg">Message</label>
                                         </div>
                                     </div>
