@@ -162,7 +162,10 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" name="mobileno"
-                                               placeholder="Your Mobile Number" required>
+                                               placeholder="Your Mobile Number" required 
+                                               pattern="[0-9]{10}" maxlength="10" minlength="10" 
+                                               oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" 
+                                               title="Phone number must be exactly 10 digits">
                                         <label data-model-name="mobileno">Your Mobile Number</label>
                                     </div>
                                 </div>

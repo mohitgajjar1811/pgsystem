@@ -241,7 +241,10 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <input type="tel" class="form-control" name="phn" placeholder="Phone No." pattern="[0-9]{10}" maxlength="10" minlength="10" title="Phone number must be exactly 10 digits" required>
+                                            <input type="text" class="form-control" name="phn" placeholder="Phone No." 
+                                                   pattern="[0-9]{10}" maxlength="10" minlength="10" 
+                                                   oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" 
+                                                   title="Phone number must be exactly 10 digits" required>
                                             <label data-model-name="phn">Phone No:</label>
                                         </div>
                                     </div>
