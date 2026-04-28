@@ -125,7 +125,7 @@
                         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="rounded shadow overflow-hidden">
                                 <div class="position-relative">
-                                    <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="">
+                                    <img class="img-fluid" src="{{ asset('img_uploads/' . $i->image) }}" alt="" style="width: 100%; height: 300px; object-fit: cover; object-position: top;">
                                     <!-- Social Media Links (if needed) -->
                                     <!--                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">-->
                                     <!--                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>-->
