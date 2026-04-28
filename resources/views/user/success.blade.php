@@ -13,7 +13,7 @@
     }
 
     .container {
-        width: 100%;
+        width: 350px;
         margin: 50px auto;
         overflow: hidden;
     }
@@ -50,8 +50,8 @@
         z-index: 2;
         margin: 0 12px;
         margin-top: -12px;
+        width: 326px;
         animation: print 5000ms cubic-bezier(0.68, -0.55, 0.265, 0.9) infinite;
-        -moz-animation: print 5000ms cubic-bezier(0.68, -0.55, 0.265, 0.9) infinite;
     }
 
     .main-contents {
@@ -212,7 +212,7 @@
                     </div>
                     <div class="order-details">
                         <div class="order-number-label">You Pay At</div>
-                        <div class="order-number">Sunrice PG</div>
+                        <div class="order-number">Sunrise PG</div>
                         <div class="complement">Thank you for completing the payment!</div>
                     </div>
                 </div>
