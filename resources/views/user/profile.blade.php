@@ -205,7 +205,11 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control" id="phoneno" name="phoneno" value="{{ $user->phoneno }}" placeholder="Phone Number">
+                                                    <input type="text" class="form-control" id="phoneno" name="phoneno" 
+                                                           value="{{ $user->phoneno }}" placeholder="Phone Number"
+                                                           pattern="[0-9]{10}" maxlength="10" minlength="10" 
+                                                           oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" 
+                                                           title="Phone number must be exactly 10 digits" required>
                                                     <label for="phoneno">Phone Number</label>
                                                 </div>
                                             </div>

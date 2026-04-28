@@ -67,9 +67,12 @@
                         </div>
                         <div>
                             <label for="phoneno" class="block text-sm font-semibold text-gray-700 mb-1.5">Phone Number</label>
-                            <input type="tel" name="phoneno" id="phoneno" 
+                            <input type="text" name="phoneno" id="phoneno" 
                                    class="block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white focus:border-transparent transition-all" 
-                                   placeholder="+1 (555) 000-0000" required>
+                                   placeholder="10-digit number" required
+                                   pattern="[0-9]{10}" maxlength="10" minlength="10" 
+                                   oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" 
+                                   title="Phone number must be exactly 10 digits">
                         </div>
                     </div>
 
