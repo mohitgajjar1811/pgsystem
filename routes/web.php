@@ -61,6 +61,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/showorder', [AdminController::class, 'showorder']);
     Route::get('/showcheckout', [AdminController::class, 'showcheckout']);
     Route::get('/deletecheckout/{id}', [AdminController::class, 'deletecheckout']);
+    Route::post('/delete-multiple-checkouts', [AdminController::class, 'deleteMultipleCheckouts']);
     Route::get('/deletenews/{id}', [AdminController::class, 'deletenews']);
     Route::get('/deleteappointment/{id}', [AdminController::class, 'deleteappointment']);
     Route::get('/deletebooking/{id}', [AdminController::class, 'deletebooking']);

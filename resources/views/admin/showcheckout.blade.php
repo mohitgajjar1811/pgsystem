@@ -10,10 +10,20 @@
 @include('admin.partials.filters')
 
 <div id="admin-table-container">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <table class="w-full text-sm">
+    <form id="bulk-delete-form" method="POST" action="/admin/delete-multiple-checkouts">
+        @csrf
+        <div class="mb-4 flex justify-end">
+            <button type="button" onclick="submitBulkDelete()" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md text-sm transition-colors flex items-center">
+                <i data-feather="trash-2" class="w-4 h-4 mr-2"></i> Delete Selected
+            </button>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <table class="w-full text-sm">
             <thead>
                 <tr class="bg-gray-50 border-b border-gray-100">
+                    <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3 w-12">
+                        <input type="checkbox" id="selectAll" class="rounded border-gray-300">
+                    </th>
                     <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Room Name</th>
                     <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Bed</th>
                     <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-3">Price / Bed</th>
@@ -24,6 +34,9 @@
             <tbody class="divide-y divide-gray-50">
                 @foreach($data14 as $i)
                 <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-3">
+                        <input type="checkbox" name="ids[]" value="{{ $i->id }}" class="bulk-checkbox rounded border-gray-300">
+                    </td>
                     <td class="px-6 py-3 font-medium text-gray-800">{{ $i->roomname }}</td>
                     <td class="px-6 py-3 text-gray-600">{{ $i->bed }}</td>
                     <td class="px-6 py-3 text-gray-600">₹{{ $i->priceperb }}</td>
@@ -43,6 +56,31 @@
             {{ $data14->links() }}
         </div>
     </div>
+    </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectAll = document.getElementById('selectAll');
+        const checkboxes = document.querySelectorAll('.bulk-checkbox');
+
+        if (selectAll) {
+            selectAll.addEventListener('change', function() {
+                checkboxes.forEach(cb => cb.checked = this.checked);
+            });
+        }
+    });
+
+    function submitBulkDelete() {
+        const checkedBoxes = document.querySelectorAll('.bulk-checkbox:checked');
+        if (checkedBoxes.length === 0) {
+            alert('Please select at least one checkout to delete.');
+            return;
+        }
+        if (confirm('Are you sure you want to delete all selected checkouts?')) {
+            document.getElementById('bulk-delete-form').submit();
+        }
+    }
+</script>
 
 @endsection

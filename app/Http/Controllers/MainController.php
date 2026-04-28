@@ -224,6 +224,15 @@ class MainController extends Controller
                 $order->beds = $postData['bed'] ?? 1;
                 $order->save();
 
+                // Create checkout record for admin
+                $cout = new Cout();
+                $cout->roomname = $postData['roomnme'] ?? null;
+                $cout->bed = $postData['bed'] ?? 1;
+                $cout->priceperb = $postData['priceperb'] ?? 0;
+                $cout->deposite = $postData['deposite'] ?? 1000;
+                $cout->total = $postData['total'] ?? $totalValue;
+                $cout->save();
+
                 // --- Send Emails via Admin SMTP ---
                 $smtp = $this->configureSmtp();
                 if ($smtp) {

@@ -266,11 +266,10 @@ class AdminController extends Controller
     {
         $query = Cout::query();
         if ($request->filled('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%')
-                ->orWhere('email', 'like', '%' . $request->search . '%');
+            $query->where('roomname', 'like', '%' . $request->search . '%');
         }
         $data14 = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
-        $sortOptions = ['name' => 'Name', 'email' => 'Email'];
+        $sortOptions = ['roomname' => 'Room Name', 'total' => 'Total'];
         return view('admin.showcheckout', compact('data14', 'sortOptions'));
     }
 
@@ -387,6 +386,15 @@ class AdminController extends Controller
     {
         Cout::where('id', $id)->delete();
         return redirect('/admin/showcheckout');
+    }
+
+    public function deleteMultipleCheckouts(Request $request)
+    {
+        $ids = $request->input('ids');
+        if ($ids && is_array($ids)) {
+            Cout::whereIn('id', $ids)->delete();
+        }
+        return redirect('/admin/showcheckout')->with('success', 'Selected checkouts deleted successfully.');
     }
 
     public function smtpSettings(Request $request)
