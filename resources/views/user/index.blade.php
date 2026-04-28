@@ -267,7 +267,7 @@
                                             <a class="btn btn-sm btn-primary rounded py-2 px-2" href="/loadappointment">SCHEDULE
                                                 A
                                                 VISIT</a>
-                                            <a class="btn btn-sm btn-dark rounded py-2 px-8" href="/loadroom">BOOK
+                                            <a class="btn btn-sm btn-dark rounded py-2 px-8" href="/loadbooking/{{ $i->title }}/{{ $i->price }}">BOOK
                                                 NOW</a>
                                         </div>
                                     </div>
