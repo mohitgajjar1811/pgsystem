@@ -353,6 +353,15 @@ class AdminController extends Controller
         return redirect('/admin/showbooking');
     }
 
+    public function deleteMultipleBookings(Request $request)
+    {
+        $ids = $request->input('ids');
+        if ($ids && is_array($ids)) {
+            Booking::whereIn('id', $ids)->delete();
+        }
+        return redirect('/admin/showbooking')->with('success', 'Selected bookings deleted successfully.');
+    }
+
     public function deletecontact($id)
     {
         Student::where('id', $id)->delete();

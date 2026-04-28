@@ -64,6 +64,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/deletenews/{id}', [AdminController::class, 'deletenews']);
     Route::get('/deleteappointment/{id}', [AdminController::class, 'deleteappointment']);
     Route::get('/deletebooking/{id}', [AdminController::class, 'deletebooking']);
+    Route::post('/delete-multiple-bookings', [AdminController::class, 'deleteMultipleBookings']);
     Route::get('/deletecontact/{id}', [AdminController::class, 'deletecontact']);
     Route::get('/deleteorder/{id}', [AdminController::class, 'deleteorder']);
     
