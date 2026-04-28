@@ -123,7 +123,7 @@
                                 <div class="border rounded p-1">
                                     <div class="border rounded text-center p-4">
                                         <i class="fa fa-hotel fa-2x text-primary mb-2"></i>
-                                        <h2 class="mb-1" data-toggle="counter-up">52</h2>
+                                        <h2 class="mb-1" data-toggle="counter-up">{{ $totalRooms }}</h2>
                                         <p class="mb-0">Rooms</p>
                                     </div>
                                 </div>
@@ -131,9 +131,9 @@
                             <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">
                                 <div class="border rounded p-1">
                                     <div class="border rounded text-center p-4">
-                                        <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>
-                                        <h2 class="mb-1" data-toggle="counter-up">12</h2>
-                                        <p class="mb-0">Staffs</p>
+                                        <i class="fa fa-bed fa-2x text-primary mb-2"></i>
+                                        <h2 class="mb-1" data-toggle="counter-up">{{ $totalRemainingBeds }}</h2>
+                                        <p class="mb-0">Remaining Beds</p>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                                 <div class="border rounded p-1">
                                     <div class="border rounded text-center p-4">
                                         <i class="fa fa-users fa-2x text-primary mb-2"></i>
-                                        <h2 class="mb-1" data-toggle="counter-up">500</h2>
+                                        <h2 class="mb-1" data-toggle="counter-up">{{ $totalClients }}</h2>
                                         <p class="mb-0">Clients</p>
                                     </div>
                                 </div>

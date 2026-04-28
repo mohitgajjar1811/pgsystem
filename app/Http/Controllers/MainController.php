@@ -22,7 +22,22 @@ class MainController extends Controller
 {
     public function loadabout() {
         $data1 = Team::all();
-        return view('user.about', ['data' => $data1]);
+        $rooms = Blog::all();
+        $totalRooms = $rooms->count();
+        $totalRemainingBeds = 0;
+        foreach ($rooms as $room) {
+            $bookedCount = Order::where('roomname', $room->title)->sum('beds');
+            $remaining = $room->bed - $bookedCount;
+            $totalRemainingBeds += max(0, $remaining);
+        }
+        $totalClients = Order::distinct('uid_id')->count('uid_id');
+
+        return view('user.about', [
+            'data' => $data1,
+            'totalRooms' => $totalRooms,
+            'totalRemainingBeds' => $totalRemainingBeds,
+            'totalClients' => $totalClients
+        ]);
     }
 
     public function loadbooking(Request $request, $title, $price) {
@@ -75,13 +90,25 @@ class MainController extends Controller
 
     public function loadindex() {
         $data = Blog::all();
+        $totalRooms = $data->count();
+        $totalRemainingBeds = 0;
         foreach ($data as $room) {
             $bookedCount = Order::where('roomname', $room->title)->sum('beds');
             $room->remaining_beds = $room->bed - $bookedCount;
+            $totalRemainingBeds += max(0, $room->remaining_beds);
         }
         $data11 = Team::all();
         $data2 = Test::all();
-        return view('user.index', ['data' => $data, 'data11' => $data11, 'data2' => $data2]);
+        $totalClients = Order::distinct('uid_id')->count('uid_id');
+
+        return view('user.index', [
+            'data' => $data, 
+            'data11' => $data11, 
+            'data2' => $data2,
+            'totalRooms' => $totalRooms,
+            'totalRemainingBeds' => $totalRemainingBeds,
+            'totalClients' => $totalClients
+        ]);
     }
 
     public function loadroom(Request $request) {
