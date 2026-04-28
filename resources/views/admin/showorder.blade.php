@@ -41,10 +41,12 @@
                     </td>
                     <td class="px-6 py-3 text-gray-400 font-mono text-xs">#{{ $i->id }}</td>
                     <td class="px-6 py-3 font-semibold text-gray-800">₹{{ $i->amt }}</td>
-                    <td class="px-6 py-3 text-gray-600">{{ $i->uid }}</td>
+                    <td class="px-6 py-3 text-gray-600">{{ $i->uid_id }}</td>
                     <td class="px-6 py-3 text-gray-600">{{ $i->email }}</td>
                     <td class="px-6 py-3 font-medium text-gray-800">{{ $i->firstname }}</td>
-                    <td class="px-6 py-3 text-gray-500 max-w-xs truncate">{{ $i->blog_data }}</td>
+                    <td class="px-6 py-3 text-gray-500 max-w-xs truncate">
+                        {{ $i->roomname }} ({{ $i->beds }} Bed{{ $i->beds > 1 ? 's' : '' }})
+                    </td>
                     <td class="px-6 py-3 text-right">
                         <a href="/admin/deleteorder/{{ $i->id }}" class="inline-flex items-center gap-1 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-md no-underline transition-colors"
                            onclick="return confirm('Delete this order?')">
