@@ -67,6 +67,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::post('/delete-multiple-bookings', [AdminController::class, 'deleteMultipleBookings']);
     Route::get('/deletecontact/{id}', [AdminController::class, 'deletecontact']);
     Route::get('/deleteorder/{id}', [AdminController::class, 'deleteorder']);
+    Route::post('/delete-multiple-orders', [AdminController::class, 'deleteMultipleOrders']);
     
     Route::match(['get', 'post'], '/addtest', [AdminController::class, 'addtest']);
     Route::get('/showtest', [AdminController::class, 'showtest']);

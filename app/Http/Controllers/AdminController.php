@@ -374,6 +374,15 @@ class AdminController extends Controller
         return redirect('/admin/showorder');
     }
 
+    public function deleteMultipleOrders(Request $request)
+    {
+        $ids = $request->input('ids');
+        if ($ids && is_array($ids)) {
+            Order::whereIn('id', $ids)->delete();
+        }
+        return redirect('/admin/showorder')->with('success', 'Selected orders deleted successfully.');
+    }
+
     public function deletecheckout($id)
     {
         Cout::where('id', $id)->delete();
