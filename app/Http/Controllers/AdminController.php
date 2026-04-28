@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-    public function dashboard() {
+    public function dashboard()
+    {
         $stats = [
             'teams' => Team::count(),
             'rooms' => Blog::count(),
@@ -34,7 +35,8 @@ class AdminController extends Controller
         return view('admin.sidebar', compact('stats'));
     }
 
-    public function shownews(Request $request) {
+    public function shownews(Request $request)
+    {
         $query = Newsletter::query();
         if ($request->filled('search')) {
             $query->where('email', 'like', '%' . $request->search . '%');
@@ -44,13 +46,14 @@ class AdminController extends Controller
         return view('admin.shownews', compact('data10', 'sortOptions'));
     }
 
-    public function showappointment(Request $request) {
+    public function showappointment(Request $request)
+    {
         $query = Apt::query();
         if ($request->filled('search')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('email', 'like', '%' . $request->search . '%')
-                  ->orWhere('phn', 'like', '%' . $request->search . '%');
+                    ->orWhere('email', 'like', '%' . $request->search . '%')
+                    ->orWhere('phn', 'like', '%' . $request->search . '%');
             });
         }
         $data = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
@@ -58,13 +61,14 @@ class AdminController extends Controller
         return view('admin.showappointment', compact('data', 'sortOptions'));
     }
 
-    public function showbooking(Request $request) {
+    public function showbooking(Request $request)
+    {
         $query = Booking::query();
         if ($request->filled('search')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('email', 'like', '%' . $request->search . '%')
-                  ->orWhere('mobileno', 'like', '%' . $request->search . '%');
+                    ->orWhere('email', 'like', '%' . $request->search . '%')
+                    ->orWhere('mobileno', 'like', '%' . $request->search . '%');
             });
         }
         $data = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
@@ -72,12 +76,13 @@ class AdminController extends Controller
         return view('admin.showbooking', compact('data', 'sortOptions'));
     }
 
-    public function showcontact(Request $request) {
+    public function showcontact(Request $request)
+    {
         $query = Student::query();
         if ($request->filled('search')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('email', 'like', '%' . $request->search . '%');
+                    ->orWhere('email', 'like', '%' . $request->search . '%');
             });
         }
         $data1 = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
@@ -85,7 +90,8 @@ class AdminController extends Controller
         return view('admin.showcontact', compact('data1', 'sortOptions'));
     }
 
-    public function addteam(Request $request) {
+    public function addteam(Request $request)
+    {
         $data11 = Team::all();
         if ($request->isMethod('post')) {
             $obj = new Team();
@@ -105,14 +111,15 @@ class AdminController extends Controller
         return view('admin.addteam', ['data11' => $data11]);
     }
 
-    public function showregistration(Request $request) {
+    public function showregistration(Request $request)
+    {
         $query = Signup::query();
         if ($request->filled('search')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('firstname', 'like', '%' . $request->search . '%')
-                  ->orWhere('lastname', 'like', '%' . $request->search . '%')
-                  ->orWhere('email', 'like', '%' . $request->search . '%')
-                  ->orWhere('phoneno', 'like', '%' . $request->search . '%');
+                    ->orWhere('lastname', 'like', '%' . $request->search . '%')
+                    ->orWhere('email', 'like', '%' . $request->search . '%')
+                    ->orWhere('phoneno', 'like', '%' . $request->search . '%');
             });
         }
         $data12 = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
@@ -120,13 +127,14 @@ class AdminController extends Controller
         return view('admin.showregistration', compact('data12', 'sortOptions'));
     }
 
-    public function showlogin(Request $request) {
+    public function showlogin(Request $request)
+    {
         $query = Signup::query();
         if ($request->filled('search')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('firstname', 'like', '%' . $request->search . '%')
-                  ->orWhere('lastname', 'like', '%' . $request->search . '%')
-                  ->orWhere('email', 'like', '%' . $request->search . '%');
+                    ->orWhere('lastname', 'like', '%' . $request->search . '%')
+                    ->orWhere('email', 'like', '%' . $request->search . '%');
             });
         }
         $data13 = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
@@ -134,17 +142,19 @@ class AdminController extends Controller
         return view('admin.showlogin', compact('data13', 'sortOptions'));
     }
 
-    public function deleteregistration($id) {
+    public function deleteregistration($id)
+    {
         Signup::where('id', $id)->delete();
         return redirect('/admin/showregistration');
     }
 
-    public function showteam(Request $request) {
+    public function showteam(Request $request)
+    {
         $query = Team::query();
         if ($request->filled('search')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('dsg', 'like', '%' . $request->search . '%');
+                    ->orWhere('dsg', 'like', '%' . $request->search . '%');
             });
         }
         $data11 = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
@@ -152,12 +162,14 @@ class AdminController extends Controller
         return view('admin.showteam', compact('data11', 'sortOptions'));
     }
 
-    public function deleteteam($id) {
+    public function deleteteam($id)
+    {
         Team::where('id', $id)->delete();
         return redirect('/admin/showteam');
     }
 
-    public function updateteam(Request $request, $id) {
+    public function updateteam(Request $request, $id)
+    {
         $data11 = Team::find($id);
         if ($request->isMethod('post')) {
             $data11->name = $request->input('name');
@@ -174,7 +186,8 @@ class AdminController extends Controller
         return view('admin.updateteam', ['data11' => $data11]);
     }
 
-    public function addroom(Request $request) {
+    public function addroom(Request $request)
+    {
         $data = Blog::all();
         if ($request->isMethod('post')) {
             $obj = new Blog();
@@ -196,13 +209,14 @@ class AdminController extends Controller
         return view('admin.addroom', ['data' => $data]);
     }
 
-    public function showroom(Request $request) {
+    public function showroom(Request $request)
+    {
         $query = Blog::query();
         if ($request->filled('search')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('title', 'like', '%' . $request->search . '%')
-                  ->orWhere('detail', 'like', '%' . $request->search . '%')
-                  ->orWhere('bed', 'like', '%' . $request->search . '%');
+                    ->orWhere('detail', 'like', '%' . $request->search . '%')
+                    ->orWhere('bed', 'like', '%' . $request->search . '%');
             });
         }
         $data = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
@@ -210,7 +224,8 @@ class AdminController extends Controller
         return view('admin.showroom', compact('data', 'sortOptions'));
     }
 
-    public function updateroom(Request $request, $id) {
+    public function updateroom(Request $request, $id)
+    {
         $data = Blog::find($id);
         if ($request->isMethod('post')) {
             $data->price = $request->input('price');
@@ -229,12 +244,14 @@ class AdminController extends Controller
         return view('admin.updateroom', ['data' => $data]);
     }
 
-    public function deleteroom($id) {
+    public function deleteroom($id)
+    {
         Blog::where('id', $id)->delete();
         return redirect('/admin/showroom');
     }
 
-    public function showorder(Request $request) {
+    public function showorder(Request $request)
+    {
         $query = Order::query();
         if ($request->filled('search')) {
             $query->where('order_id', 'like', '%' . $request->search . '%');
@@ -245,18 +262,20 @@ class AdminController extends Controller
         return view('admin.showorder', compact('data13', 'sortOptions'));
     }
 
-    public function showcheckout(Request $request) {
+    public function showcheckout(Request $request)
+    {
         $query = Cout::query();
         if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('email', 'like', '%' . $request->search . '%');
+                ->orWhere('email', 'like', '%' . $request->search . '%');
         }
         $data14 = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
         $sortOptions = ['name' => 'Name', 'email' => 'Email'];
         return view('admin.showcheckout', compact('data14', 'sortOptions'));
     }
 
-    public function addtest(Request $request) {
+    public function addtest(Request $request)
+    {
         $data = Test::all();
         if ($request->isMethod('post')) {
             $obj = new Test();
@@ -277,12 +296,13 @@ class AdminController extends Controller
         return view('admin.addtest', ['data' => $data]);
     }
 
-    public function showtest(Request $request) {
+    public function showtest(Request $request)
+    {
         $query = Test::query();
         if ($request->filled('search')) {
-            $query->where(function($q) use ($request) {
+            $query->where(function ($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('dsg', 'like', '%' . $request->search . '%');
+                    ->orWhere('dsg', 'like', '%' . $request->search . '%');
             });
         }
         $data2 = $query->orderBy($request->get('sort', 'id'), $request->get('direction', 'desc'))->paginate(10)->withQueryString();
@@ -290,7 +310,8 @@ class AdminController extends Controller
         return view('admin.showtest', compact('data2', 'sortOptions'));
     }
 
-    public function updatetest(Request $request, $id) {
+    public function updatetest(Request $request, $id)
+    {
         $data2 = Test::find($id);
         if ($request->isMethod('post')) {
             $data2->name = $request->input('name');
@@ -308,42 +329,50 @@ class AdminController extends Controller
         return view('admin.updatetest', ['data' => $data2]);
     }
 
-    public function deletetest($id) {
+    public function deletetest($id)
+    {
         Test::where('id', $id)->delete();
         return redirect('/admin/showtest');
     }
 
-    public function deletenews($id) {
+    public function deletenews($id)
+    {
         Newsletter::where('id', $id)->delete();
         return redirect('/admin/shownews');
     }
 
-    public function deleteappointment($id) {
+    public function deleteappointment($id)
+    {
         Apt::where('id', $id)->delete();
         return redirect('/admin/showappointment');
     }
 
-    public function deletebooking($id) {
+    public function deletebooking($id)
+    {
         Booking::where('id', $id)->delete();
         return redirect('/admin/showbooking');
     }
 
-    public function deletecontact($id) {
+    public function deletecontact($id)
+    {
         Student::where('id', $id)->delete();
         return redirect('/admin/showcontact');
     }
 
-    public function deleteorder($id) {
+    public function deleteorder($id)
+    {
         Order::where('id', $id)->delete();
         return redirect('/admin/showorder');
     }
 
-    public function deletecheckout($id) {
+    public function deletecheckout($id)
+    {
         Cout::where('id', $id)->delete();
         return redirect('/admin/showcheckout');
     }
 
-    public function smtpSettings(Request $request) {
+    public function smtpSettings(Request $request)
+    {
         $smtp = SmtpSetting::first();
         if ($request->isMethod('post')) {
             $data = $request->only(['host', 'port', 'encryption', 'username', 'password', 'from_name', 'from_email', 'admin_email']);
